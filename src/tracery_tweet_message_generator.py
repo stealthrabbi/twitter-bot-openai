@@ -2,8 +2,8 @@ import json
 import tracery
 from tracery.modifiers import base_english
 
-class TraceryTweetMessageGenerator:
 
+class TraceryTweetMessageGenerator:
     tracery_source_file = "tracery.json"
 
     def __init__(self):

@@ -12,13 +12,13 @@ from src.open_ai_requestor import OpenAiRequestor
 from src.twitter_bot import TwitterBot
 from src.tracery_tweet_message_generator import TraceryTweetMessageGenerator
 
-app = Flask('')
+app = Flask("")
+
 
 def _check_authorization(request: Request) -> Response:
     if request and request.authorization:
-
         expected_username = os.getenv("AUTH_USER")
-        expected_password = os.getenv("AUTH_PASSWORD") 
+        expected_password = os.getenv("AUTH_PASSWORD")
 
         username = request.authorization.username
         password = request.authorization.password
@@ -28,13 +28,15 @@ def _check_authorization(request: Request) -> Response:
         return Response("bad login", status=HTTPStatus.UNAUTHORIZED)
     return Response("forbidden!!", status=HTTPStatus.FORBIDDEN)
 
-@app.route('/')
+
+@app.route("/")
 def home():
     print("in home()")
     return "Service Online!! (from root)"
 
-@app.route('/api/health')
-def health_check():    
+
+@app.route("/api/health")
+def health_check():
     print("in healthcheck()")
     return "Service Online!!"
 
@@ -43,8 +45,9 @@ def health_check():
 def auth_check():
     print("in authcheck")
     return _check_authorization(request)
-        
-@app.route('/api/post-tracery-tweet')
+
+
+@app.route("/api/post-tracery-tweet")
 def post_tracery_tweet():
     print("in post-tracery-tweet")
     authorization_response = _check_authorization(request)
@@ -53,13 +56,14 @@ def post_tracery_tweet():
 
     message_generator = TraceryTweetMessageGenerator()
     twitter_bot = TwitterBot(TwitterBot.AUTH_KEY_SET_TRACERY)
-    
+
     tweet_text = message_generator.get_random_tweet()
     twitter_bot.post_tweet(tweet_text)
 
     return "Tracery Tweet Sent"
 
-@app.route('/api/post-openai-tweet')
+
+@app.route("/api/post-openai-tweet")
 def post_openai_tweet():
     print("in post-tracery-tweet")
     authorization_response = _check_authorization(request)
@@ -68,23 +72,24 @@ def post_openai_tweet():
 
     message_generator = OpenAiRequestor()
     twitter_bot = TwitterBot(TwitterBot.AUTH_KEY_SET_OPEN_AI)
-    
+
     tweet_text = message_generator.get_random_tweet()
 
     twitter_bot.post_tweet(tweet_text)
 
     return "OpenAI Tweet Sent"
 
+
 def start_flask_server():
     print("starting flask")
     app.run()
     print("flask ended")
 
+
 def main():
     load_dotenv()
     start_flask_server()
 
+
 if __name__ == "__main__":
-    main()    
-
-
+    main()

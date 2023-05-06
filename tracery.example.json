@@ -1,0 +1,11 @@
+{
+  "origin": "#greeting#, #title# #name#!",
+  "greeting": [
+    "Most sincere greetings",
+    "Warmest salutations",
+    "Deepest respects",
+    "Heartfelt felicitations"
+  ],
+  "title": ["Esteemed", "Honored", "Beloved", "Cherished"],
+  "name": ["One", "Friend", "Companion", "Partner"]
+}
