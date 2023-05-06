@@ -1,5 +1,5 @@
 {
-  "origin": "You are a #gender# #race#, and you have chosen to be a #class#.",
+  "origin": "You are a #gender# #race#, and you have chosen to be a #class#. Your birthsign is #birthsign#.",
   "gender": ["male", "female"],
   "race": [
     "Nord",
@@ -13,5 +13,20 @@
     "Altmer",
     "Bosmer"
   ],
-  "class": ["Warrior", "Mage", "Thief"]
+  "class": ["Warrior", "Mage", "Thief"],
+  "birthsign": [
+    "The Apprentice",
+    "The Atronach",
+    "The Lady",
+    "The Lord",
+    "The Lover",
+    "The Mage",
+    "The Ritual",
+    "The Serpent",
+    "The Shadow",
+    "The Steed",
+    "The Thief",
+    "The Tower",
+    "The Warrior"
+  ]
 }
