@@ -1,11 +1,17 @@
 {
-  "origin": "#greeting#, #title# #name#!",
-  "greeting": [
-    "Most sincere greetings",
-    "Warmest salutations",
-    "Deepest respects",
-    "Heartfelt felicitations"
+  "origin": "You are a #gender# #race#, and you have chosen to be a #class#.",
+  "gender": ["male", "female"],
+  "race": [
+    "Nord",
+    "Khajiit",
+    "Argonian",
+    "Breton",
+    "Redguard",
+    "Orc",
+    "Imperial",
+    "Dunmer",
+    "Altmer",
+    "Bosmer"
   ],
-  "title": ["Esteemed", "Honored", "Beloved", "Cherished"],
-  "name": ["One", "Friend", "Companion", "Partner"]
+  "class": ["Warrior", "Mage", "Thief"]
 }
