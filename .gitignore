@@ -1,5 +1,8 @@
 # proj specific
 .vscode/
+# the real local tracery and env files
+tracery.json
+.env
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
