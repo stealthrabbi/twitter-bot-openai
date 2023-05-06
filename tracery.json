@@ -1,0 +1,61 @@
+{
+	"origin": ["#log-prefix-date#: \n\n#multi option#, #combinator# #multi option#."],
+
+	"multi option": ["#character visit#", "#character killed#", "#character date#", "#character diplomacy#", "#character sports#", "#character work#", "#character chore#", "#character random#", "#character celebrate#", "#ship battle#", "#group random#"],
+
+	"log-prefix-date": ["Captain's Log, Stardate #stardate#", "Captain's Log, Supplemental"],
+
+	"character visit": ["#character# #visit-verb# #location#", "#character# #visit-verb# #location# and was #kill-verb#" ],
+	"character date": ["#character# went on a date with #character# to #location#", "#character# went on a date with #character# aboard #ships#"],
+	"character killed": ["#character# was #kill-verb# in a #anomalies#", "#character# was #kill-verb# in a #anomalies# on board #ships#", "#character# was #kill-verb# by a #anomalies#", "#character# destroyed us all", "the crew abandoned ship"],
+	"character diplomacy": ["#character# #diplomacy-verb# peace between #group# and #group#", "#character# lead a team to rescue a POW from #location#", "#character# hosted a diplomat from #location#"],
+	"character sports": ["#character# #game# with #character#", "#character# #game# with #character# but was #kill-verb#", "#character# and #character# played poker"],
+	"character work": ["#character# and #character# #fix-verb# #fix-noun#",  "#character# rerouted power from #location# to #location#"],
+	"character chore": ["#character# took care of Spot", "#character# saved a group of colonists from #enemy#", "#character# was promoted"],
+	"character random": ["#character# discovered a new form of life", "#character# discovered a new planet", "#character# prevented a war with #location#", "#character# was freed from prison#", "#character# was imprisoned in #location#", "an alien inhabited the body of #character#", "#character# was assimilated by the Borg", "#character# began an affair with an Ambassador from #location#", "#character# began an investigation at #location#", "#character# initiated the Picard Maneuver at #location#", "#character# initiated the Riker Maneuver at #location#", "#character# was abducted by #enemy#", "#character# was impregnated by #enemy#", "#character# had their memory wiped by #enemy#", "#character# was infected by a deadly virus" ],
+	"group random": ["#group# joined the Federation", "#group# opened trade negotiations with #group#"],
+	"character celebrate": ["#character# and the rest of the crew celebrated #holiday#"],
+	"ship battle": ["the Enterprise took damage in a battle with #enemy ship#", "the crew commandeered #enemy ship#"],
+
+	"character": ["I", "me", "Commander Riker", "Acting Ensign Wesley Crusher", "The Traveler", "The Borg Queen", "Locutus of Borg", "Lt. Yarr", "Q", "Commander Data", "Counselor Troi", "Chief O'Brien", "Keiko O'Brien", "Worf, son of Mogh", "Dr. Crusher", "Dr. Pulaski", "Professor Moriarty", "Dixon Hill", "Chancellor Gowron", "Kah'less", "Kurn", "Lwaxana Troi", "Thomas Riker", "Lore", "The Crystalline Entity", "Hugh", "Lursa and B'Etor", "Damon Bok", "Alexander Rozhenko", "my double", "Reginald Barclay", "Leah Brahms", "Leah Brahms (holodeck recreation)", "Commander Geordi LaForge", "Duras", "Guinan", "Ro Laren", "Noonian Soong", "the Executive Officer in charge of Radishes", "an Exocomp", "Darmok and Jallad", "Mr. Homm", "K'Ehleyr", "Vash", "Bruce Maddox", "Mot, the barber", "Nurse Ogawa", "Vice Admiral Janeway", "Admiral Nechayev", "Armus", "B-4"],
+	
+	"location": ["Qo'nos", "Earth", "Risa", "Holodeck 2", "Transporter Room 3", "Romulus", "the Arboretum", "Cetacean Ops", "Ten Forward", "the Argolus Cluster", "the Mirror Universe", "20th Century Earth", "the Iconian gateway", "Sickbay", "prison", "the brig", "Chateau Picard", "Tenagra", "the Neutral Zone", "Deep Space 9", "Battle Bridge", "Shuttle Bay 2", "Wolf 359", "the Q Continuum", "Main Bridge", "a holodeck within the holodeck", "Starfleet Academy", "an alternate plane of existence", "a planet where it's always too hot or too cold", "Deflector Control", "Shuttlecraft El-Baz", "the Alpha Quadrant", "the edge of the galaxy"],	
+	"ships": ["Enterprise-D", "Enterprise-C", "#enemy ship#", "an alien vessel"],
+    "enemy ship": ["a Bird of Prey", "a Borg Cube", "a Borg Sphere", "a Klingon Battlecruiser", "a Romulan warbird", "a Romulan scout ship", "very tiny ships", "evil duplicates of the crew"],
+	"group": ["Starfleet Command", "the Cardassian Union", "Starfleet Intelligence", "the Maquis", "the Bajorans", "the Q Continuum", "the Tal Shiar", "the Klingon High Council", "the Romulan High Command", "Cardassian Central Command", "the Binars", "Sheliak Corporate", "the Ferengi Alliance", "the Pakleds", "the Reman Colonies"],
+	"anomalies": ["static warp shell", "gravity well", "holodeck malfunction", "class 3 ion storm", "class 5 solar disturbance", "shuttle crash", "inescapable time loop", "alien probing techniques", "dark matter comet"],
+        "enemy": ["parasitic infiltrator beings", "the Maquis", "the Crystalline Entity", "telekinetic children", "the Borg", "a collapsing star", "severe environmental hazards", "an RNA virus", "a Caradassian interrogation", "precariously stacked storage barrels"],
+	"combinator": ["but", "while", "and", "meanwhile", "because"],
+	"visit-verb": ["visited", "explored", "took a trip to", "beamed to", "took a #small-vehicle# to"],
+        "kill-verb": ["killed", "destroyed", "defeated", "lost", "stabbed through the heart", "erased from time", "paralyzed from the waist down", "vaporized"],
+	"game": ["played peresei squares", "fenced", "rode horses", "sparred", "played Hoverball", "practiced Klingon calisthenics", "played Stratagema", "played 3D Chess", "jumped on the bed"],
+        "holiday": ["First Contact Day", "Captain Picard Day", "Federation Day", "I'm Married to the Most Wonderful Woman in the Galaxy Day", "the Hindu Festival of Lights", "#character#'s birthday"],
+
+	"diplomacy-verb": ["brokered", "negotiated", "arbitered"],
+	"fix-verb": ["fixed", "performed a level 3 diagnostic on", "repaired", "investigated an issue with"],
+	"fix-noun": ["the main computer", "the food replicators", "the sonic showers", "Stellar Cartography", "the Ready Room fish tank", "the battle bridge", "the starboard nacelle", "exocomps", "the transporters",  "the warp core", "the holodecks"],
+	"small-vehicle": ["shuttle", "runabout"],
+	"stardate": ["50866.5", "43186.0", "45008.2", "42968.9", "53106.2", "50601.4", "42470.4", "54713.3", "56421.9", "41574.3", "52782.4", "53269.7", "44000.0", "48264.0", "54466.8", "48035.5", "47104.3", "51866.1", "47427.8", "52808.3", "54132.3", "51287.6", "45889.9", "44260.2", "47436.8", "45724.7", "55845.6", "54119.0", "48987.5", "47461.5", "47555.6", "42896.5", "49497.3", "56813.5", "46569.4", "55566.7", "56659.9", "45411.2", "55277.9", "54302.2", "41952.1", "50494.3", "41375.9", "54414.1", "44039.5", "49605.3", "48102.3", "54661.6", "46837.7", "46754.0", "41792.1", "52484.7", "44807.8", "55362.6", "55254.7", "54149.3", "47494.5", "42405.0", "51435.2", "54435.6", "45796.4", "46375.4", "52746.2", "46019.4", "47084.7", "43325.0", "47750.1", "50941.2", "43601.8", "49346.6", "42397.5", "45369.1", "46452.2", "54558.1", "46766.3", "45814.9", "43315.6", "43978.7", "51364.8", "48377.9", "54246.9", "43770.0", "52945.2", "56143.0", "49926.6", "42916.1", "51414.0", "55917.7", "55123.5", "47946.0", "50961.6", "47762.8", "53037.7", "47476.8", "45852.5", "52124.6", "44154.0", "45788.0", "47434.2", "41921.6", "45741.6", "43453.2", "47244.0", "41328.9", "48738.2", "44764.6", "53080.7", "41977.3", "50358.7", "49890.5", "43128.9", "52840.5", "43276.3", "45243.3", "44914.7", "55150.3", "48904.9", "54960.1", "53805.0", "49261.4", "54367.2", "53729.9", "50731.3", "42456.8", "47032.5", "51090.1", "55684.4", "49162.0", "43106.3", "45984.1", "46852.3", "48717.0", "41334.3", "50211.6", "55113.4", "49012.9", "54031.6", "56526.8", "47719.2", "53608.3", "48207.0", "49361.5", "48166.9", "54775.9", "56098.2", "54921.6", "49284.3", "44241.2", "49985.2", "51698.1", "55118.5", "41276.7", "41781.8", "56897.3", "50744.7", "43600.0", "47535.2", "51492.2", "50999.2", "42263.4", "48867.8", "53691.8", "51779.5", "44231.6", "55656.2", 
+"56818.1", "43017.4", "56136.6", "53616.3", "54582.1", "54162.0", "56268.5", "49435.5", "49095.6", "48947.6", "51932.2", "43194.6", "41163.1", "47561.6", "45315.2", "42602.1", "46307.4", "51959.1", "42559.5", "42608.0", "49921.9", "51554.5", "47123.2", "41870.9", "45374.3", "45153.2", "49322.1", "45947.1", "49365.8", "43886.7", "55620.8", "49501.6", "49278.9", "44832.3", "52237.6", "49807.9", "47003.9", "45851.0", "55329.7", "53918.1", "51511.0", "50894.1", "45647.4", "51152.2", "53741.6", "50832.9", "54403.3", "45580.3", "44628.6", "55521.4", "41920.9", "47542.2", "54036.2", "42972.6", "43013.1", "49039.3", "49974.3", "50124.6", "50977.3", "51297.2", "54582.1", "51335.6", "51459.3", "55187.0", "50187.5", "45787.9", "54450.2", "54427.8", "44883.3", "43312.0", "47513.4", "43669.5", "53800.2", "48857.1", "53803.2", "47769.9", "46268.7", "54500.9", "47008.4", "42459.9", "51473.6", "54266.8", "43864.3", "44732.8", "49620.5", "56774.2", "55856.4", "52173.8", "51854.0", "54943.1", "50988.0", "47516.0", "51226.9", "49034.2", "56300.8", "54625.0", "50489.9", "50029.8", "42908.1", "50955.0", "54687.3", "50321.9", "41701.3", "44913.6", "53864.1", "45580.4", "51667.0", "45039.6", "43877.4", "44796.9", "44334.4", "51192.9", "44130.4", "52889.8", "43843.8", "56175.3", "56245.1", "42632.8", "45116.5", "53544.2", "49742.7", "51855.4", "46021.7", "51467.7", "53751.2", "55002.9", "43840.7", "49007.4", "53686.6", "45176.0", "48937.2", "52017.4", "44368.8", "55144.5", "47688.7"]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
