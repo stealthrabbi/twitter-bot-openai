@@ -364,22 +364,6 @@ async = ["asgiref (>=3.2)"]
 dotenv = ["python-dotenv"]
 
 [[package]]
-name = "flask-login"
-version = "0.6.2"
-description = "User authentication and session management for Flask."
-category = "main"
-optional = false
-python-versions = ">=3.7"
-files = [
-    {file = "Flask-Login-0.6.2.tar.gz", hash = "sha256:c0a7baa9fdc448cdd3dd6f0939df72eec5177b2f7abe6cb82fc934d29caac9c3"},
-    {file = "Flask_Login-0.6.2-py3-none-any.whl", hash = "sha256:1ef79843f5eddd0f143c2cd994c1b05ac83c0401dc6234c143495af9a939613f"},
-]
-
-[package.dependencies]
-Flask = ">=1.0.4"
-Werkzeug = ">=1.0.1"
-
-[[package]]
 name = "frozenlist"
 version = "1.3.3"
 description = "A list-like structure which implements collections.abc.MutableSequence"
@@ -991,4 +975,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "80d3f9b002f484a172d7f527ccbfef25cf57748371a6d3fb2af2f1965ae6a3cd"
+content-hash = "b8f4f39e070055ec1022f9ac58d0f6c04baa8b9514ab23a4afc65e4f4f020520"
