@@ -1,6 +1,8 @@
 from http import HTTPStatus
 import os
-
+import logging
+from datetime import datetime
+import sys
 
 from dotenv import load_dotenv
 
@@ -12,6 +14,8 @@ from src.open_ai_requestor import OpenAiRequestor
 from src.twitter_bot import TwitterBot
 from src.tracery_tweet_message_generator import TraceryTweetMessageGenerator
 
+logger: logging.Logger
+
 app = Flask("")
 
 
@@ -22,7 +26,7 @@ def _check_authorization(request: Request) -> Response:
 
         username = request.authorization.username
         password = request.authorization.password
-        print(f"login requested for {username}")
+        logging.info(f"login requested for {username}")
         if username == expected_username and password == expected_password:
             return Response("logged in", status=HTTPStatus.ACCEPTED)
         return Response("bad login", status=HTTPStatus.UNAUTHORIZED)
@@ -31,25 +35,24 @@ def _check_authorization(request: Request) -> Response:
 
 @app.route("/")
 def home():
-    print("in home()")
     return "Service Online!! (from root)"
 
 
 @app.route("/api/health")
 def health_check():
-    print("in healthcheck()")
+    _get_logger().debug("in healthcheck()")
     return "Service Online!!"
 
 
 @app.route("/api/auth-check")
 def auth_check():
-    print("in authcheck")
+    _get_logger().debug("in authcheck")
     return _check_authorization(request)
 
 
 @app.route("/api/post-tracery-tweet")
 def post_tracery_tweet():
-    print("in post-tracery-tweet")
+    _get_logger().info("in post-tracery-tweet")
     authorization_response = _check_authorization(request)
     if authorization_response.status_code != HTTPStatus.ACCEPTED:
         return authorization_response
@@ -65,7 +68,7 @@ def post_tracery_tweet():
 
 @app.route("/api/post-openai-tweet")
 def post_openai_tweet():
-    print("in post-tracery-tweet")
+    _get_logger().info("in post-openai-tweet")
     authorization_response = _check_authorization(request)
     if authorization_response.status_code != HTTPStatus.ACCEPTED:
         return authorization_response
@@ -81,14 +84,42 @@ def post_openai_tweet():
 
 
 def start_flask_server():
-    print("starting flask")
+    _get_logger().debug("starting flask")
     app.run()
-    print("flask ended")
+    _get_logger().debug("flask ended")
 
 
 def main():
+    _configure_logger()
     load_dotenv()
     start_flask_server()
+
+
+def _configure_logger() -> None:
+    # Configure the root logger
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    )
+
+    # Create a file handler
+    os.makedirs("logs", exist_ok=True)
+    file_name = f"./logs/app{str(datetime.now().date())}.log"
+    file_handler = logging.FileHandler(file_name)
+    file_handler.setLevel(logging.DEBUG)
+    file_formatter = logging.Formatter(
+        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    )
+    file_handler.setFormatter(file_formatter)
+
+    # Add the handlers to the root logger
+    logger = logging.getLogger()
+    logger.addHandler(file_handler)
+
+
+def _get_logger() -> logging.Logger:
+    logger = logging.getLogger(__name__)
+    return logger
 
 
 if __name__ == "__main__":

@@ -1,8 +1,11 @@
 import os
 from datetime import datetime
-
+import logging
 
 import tweepy
+
+
+logger = logging.getLogger(__name__)
 
 # see https://docs.tweepy.org/en/stable/examples.html
 
@@ -48,7 +51,7 @@ class TwitterBot:
 
     def post_tweet(self, message: str):
         if os.getenv("SEND_TWEETS").lower() == "true":
-            print(f"sending tweet at {datetime.now()}: {message}")
+            logger.info(f"sending tweet at {datetime.now()}: {message}")
             self.client.create_tweet(text=message)
         else:
-            print(f"simulated tweet: {message}")
+            logger.info(f"simulated tweet: {message}")
