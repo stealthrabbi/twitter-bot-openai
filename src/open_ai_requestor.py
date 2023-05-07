@@ -40,12 +40,11 @@ class OpenAiRequestor:
         return response_text
 
     def _get_random_ai_user_prompt(self) -> str:
-        user_prompts = os.getenv("OPEN_AI_USER_PROMPT_ARRAY")
         # Convert the input string to a list of strings using ast.literal_eval
 
-        random_prompt = user_prompts
+        random_prompt = self.open_ai_user_prompt
         try:
-            user_prompts_array: List[str] = ast.literal_eval(user_prompts)
+            user_prompts_array: List[str] = ast.literal_eval(self.open_ai_user_prompt)
 
             random_prompt = random.choice(user_prompts_array)
         except (SyntaxError, ValueError) as e:
