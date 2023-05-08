@@ -30,6 +30,8 @@ class OpenAiRequestor:
                 {"role": "system", "content": self.open_ai_system_prompt},
                 {"role": "user", "content": user_prompt},
             ],
+            # slightly unsafe / more random responses. Between 0 and 2.
+            temperature=1.3,
         )
 
         logger.debug(response)
