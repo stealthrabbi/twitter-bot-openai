@@ -1,3 +1,4 @@
+from functools import wraps
 from http import HTTPStatus
 import os
 import logging
@@ -19,7 +20,18 @@ logger: logging.Logger
 app = Flask("")
 
 
-def _check_authorization(request: Request) -> Response:
+def require_authentication(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        auth_response = check_authorization(request)
+        if auth_response.status_code != HTTPStatus.ACCEPTED:
+            return auth_response
+        return f(*args, **kwargs)
+
+    return decorated
+
+
+def check_authorization(request: Request) -> Response:
     if request and request.authorization:
         expected_username = os.getenv("AUTH_USER")
         expected_password = os.getenv("AUTH_PASSWORD")
@@ -45,17 +57,16 @@ def health_check():
 
 
 @app.route("/api/auth-check")
+@require_authentication
 def auth_check():
     _get_logger().debug("in authcheck")
-    return _check_authorization(request)
+    return check_authorization(request)
 
 
 @app.route("/api/post-tracery-tweet")
+@require_authentication
 def post_tracery_tweet():
     _get_logger().info("in post-tracery-tweet")
-    authorization_response = _check_authorization(request)
-    if authorization_response.status_code != HTTPStatus.ACCEPTED:
-        return authorization_response
 
     message_generator = TraceryTweetMessageGenerator()
     twitter_bot = TwitterBot(TwitterBot.AUTH_KEY_SET_TRACERY)
@@ -67,11 +78,9 @@ def post_tracery_tweet():
 
 
 @app.route("/api/post-openai-tweet")
+@require_authentication
 def post_openai_tweet():
     _get_logger().info("in post-openai-tweet")
-    authorization_response = _check_authorization(request)
-    if authorization_response.status_code != HTTPStatus.ACCEPTED:
-        return authorization_response
 
     message_generator = OpenAiRequestor()
     twitter_bot = TwitterBot(TwitterBot.AUTH_KEY_SET_OPEN_AI)
