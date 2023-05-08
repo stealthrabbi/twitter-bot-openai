@@ -74,12 +74,12 @@ async def health_check(request: Request) -> str:
 
 @app.head("/api/auth-check")
 async def auth_check(user=Depends(get_authenticated_user)):
-    logger().debug("in authcheck")
+    logger.debug("in authcheck")
 
 
 @app.head("/api/post-tracery-tweet")
 async def post_tracery_tweet(user=Depends(get_authenticated_user)):
-    logger().info("in post-tracery-tweet")
+    logger.info("in post-tracery-tweet")
 
     message_generator = TraceryTweetMessageGenerator()
     twitter_bot = TwitterBot(TwitterBot.AUTH_KEY_SET_TRACERY)
@@ -92,7 +92,7 @@ async def post_tracery_tweet(user=Depends(get_authenticated_user)):
 
 @app.head("/api/post-openai-tweet")
 async def post_openai_tweet(user=Depends(get_authenticated_user)):
-    logger().info("in post-openai-tweet")
+    logger.info("in post-openai-tweet")
 
     message_generator = OpenAiRequestor()
     twitter_bot = TwitterBot(TwitterBot.AUTH_KEY_SET_OPEN_AI)
@@ -106,7 +106,7 @@ async def post_openai_tweet(user=Depends(get_authenticated_user)):
 
 def start_web_server():
     logger.debug("starting webapp")
-    uvicorn.run("app:app", host="0.0.0.0")
+    uvicorn.run("app:app", host="0.0.0.0", port=80)
     logger.debug("webapp ended")
 
 
