@@ -107,7 +107,7 @@ def main():
 def _configure_logger() -> None:
     # Configure the root logger
     logging.basicConfig(
-        level=logging.DEBUG,
+        level=logging.INFO,
         format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     )
 
@@ -115,7 +115,7 @@ def _configure_logger() -> None:
     os.makedirs("logs", exist_ok=True)
     file_name = f"./logs/app{str(datetime.now().date())}.log"
     file_handler = logging.FileHandler(file_name)
-    file_handler.setLevel(logging.DEBUG)
+    file_handler.setLevel(logging.INFO)
     file_formatter = logging.Formatter(
         "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     )

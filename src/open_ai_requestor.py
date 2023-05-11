@@ -19,6 +19,7 @@ class OpenAiRequestor:
         openai.api_key = os.getenv("OPENAI_API_KEY")
         self.open_ai_system_prompt = os.getenv("OPEN_AI_SYSTEM_PROMPT")
         self.open_ai_user_prompt = os.getenv("OPEN_AI_USER_PROMPT_ARRAY")
+        self.temperature = (os.getenv("OPEN_AI_TEMPERATURE"),)
 
     # conversation with gpt-3.5-turbo gives more thought out responses than using text-davinci
     def get_random_tweet(self) -> str:
@@ -30,6 +31,8 @@ class OpenAiRequestor:
                 {"role": "system", "content": self.open_ai_system_prompt},
                 {"role": "user", "content": user_prompt},
             ],
+            # 0-2. Higher values are more random and less deterministic
+            temperature=self.temperature,
         )
 
         logger.debug(response)
