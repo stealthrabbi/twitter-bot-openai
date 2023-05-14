@@ -11,13 +11,24 @@ from dotenv import load_dotenv
 from flask import Flask, Request, request, Response
 from flask import Flask
 from src.open_ai_requestor import OpenAiRequestor
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 
 from src.twitter_bot import TwitterBot
 from src.tracery_tweet_message_generator import TraceryTweetMessageGenerator
 
 logger: logging.Logger
 
-app = Flask("")
+app = Flask(__name__)
+limiter = Limiter(
+    get_remote_address,
+    app=app,
+    storage_uri="memory://",
+)
+
+# if running locally, the env can't be read yet.
+tweet_limit = os.getenv("TWEET_LIMIT") or "1 per hour"
+print(tweet_limit)
 
 
 def require_authentication(f):
@@ -51,6 +62,7 @@ def home():
 
 
 @app.route("/api/health")
+@limiter.limit("2 per minute")
 def health_check():
     _get_logger().debug("in healthcheck()")
     return "Service Online!!"
@@ -65,6 +77,7 @@ def auth_check():
 
 @app.route("/api/post-tracery-tweet")
 @require_authentication
+@limiter.limit(tweet_limit)
 def post_tracery_tweet():
     _get_logger().info("in post-tracery-tweet")
 
@@ -79,6 +92,7 @@ def post_tracery_tweet():
 
 @app.route("/api/post-openai-tweet")
 @require_authentication
+@limiter.limit(tweet_limit)
 def post_openai_tweet():
     _get_logger().info("in post-openai-tweet")
 
