@@ -3,6 +3,7 @@
 # the real local tracery and env files
 tracery.json
 .env
+*.zip
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
