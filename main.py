@@ -23,7 +23,7 @@ def main(request=None):
     logger.info("posting AI tweet")
     post_ai_tweet()
     logger.info("post tracery tweet")
-    post_tracery_tweet
+    post_tracery_tweet()
     return "Success Tweet function"
 
 

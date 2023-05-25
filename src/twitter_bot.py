@@ -50,6 +50,7 @@ class TwitterBot:
         self.api = tweepy.API(auth)
 
     def post_tweet(self, message: str):
+        message = message[:280] + (message[280:] and "..")
         if os.getenv("SEND_TWEETS").lower() == "true":
             logger.info(f"sending tweet at {datetime.now()}: {message}")
             self.client.create_tweet(text=message)
