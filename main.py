@@ -10,7 +10,7 @@ from src.tracery_tweet_message_generator import TraceryTweetMessageGenerator
 def _configure_logger() -> None:
     # Configure the root logger
     logging.basicConfig(
-        level=logging.INFO,
+        level=logging.DEBUG,
         format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     )
 
