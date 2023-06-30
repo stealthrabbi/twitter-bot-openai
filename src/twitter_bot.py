@@ -1,6 +1,8 @@
 import os
 from datetime import datetime
 import logging
+import time
+from typing import List
 
 import tweepy
 
@@ -50,11 +52,42 @@ class TwitterBot:
         self.api = tweepy.API(auth)
 
     def post_tweet(self, message: str):
-        if len(message) > 280:
-            logger.info(f"text has been truncated! Original length: {len(message)}")
-            message = message[:277] + ".."
-        if os.getenv("SEND_TWEETS").lower() == "true":
-            logger.info(f"sending tweet at {datetime.now()}: {message}")
-            self.client.create_tweet(text=message)
-        else:
-            logger.info(f"simulated tweet: {message}")
+        chunks = self._split_text(message)
+
+        logger.info(f"tweet chunks: {chunks}")
+
+        # Post the first tweet
+        first_chunk = chunks[0]
+        logger.info(f"sending tweet 0 at {datetime.now()}: {first_chunk}")
+        tweet = self.client.create_tweet(text=first_chunk)
+        reply_to_tweet_id = tweet.data["id"]
+
+        logger.info(f"Created initial tweet. ID: {reply_to_tweet_id}")
+
+        # Post the remaining tweets as replies
+        for chunk in chunks[1:]:
+            tweet = self.client.create_tweet(
+                text=chunk, in_reply_to_tweet_id=reply_to_tweet_id
+            )
+            logger.info(f"sending chunk tweet at {datetime.now()}: {chunk}")
+            reply_to_tweet_id = tweet.data["id"]
+            time.sleep(0.1)  # Add a delay between each tweet (in seconds)
+
+    def _split_text(self, text: str, chunk_size=280) -> List[str]:
+        """Splits the text in to chunks given the size. Splitting is done on whole words.
+        Chunk ends if the next word would put the chunk over the size limit"""
+        words = text.split()
+        chunks = []
+        current_chunk = ""
+
+        for word in words:
+            if len(current_chunk) + len(word) + 1 <= chunk_size:
+                current_chunk += word + " "
+            else:
+                chunks.append(current_chunk.strip())
+                current_chunk = word + " "
+
+        if current_chunk:
+            chunks.append(current_chunk.strip())
+
+        return chunks

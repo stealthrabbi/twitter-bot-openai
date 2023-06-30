@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 class OpenAiRequestor:
     # see https://platform.openai.com/docs/models/gpt-3-5
     OPEN_AI_MODEL = "text-davinci-003"
-    OPEN_AI_CHAT_MODEL = "gpt-3.5-turbo"
+    OPEN_AI_CHAT_MODEL = "gpt-3.5-turbo-0613"
 
     def __init__(self):
         openai.api_key = os.getenv("OPENAI_API_KEY")
